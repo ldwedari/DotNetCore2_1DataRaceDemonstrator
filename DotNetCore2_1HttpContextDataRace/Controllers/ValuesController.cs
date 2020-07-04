@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -13,7 +14,9 @@ namespace DotNetCore2_1HttpContextDataRace.Controllers
         [HttpGet]
         public async Task Get([FromServices]Service service)
         {
-            HttpContext.Items["x"] = $"{RuntimeHelpers.GetHashCode(HttpContext):x8}";
+            var httpContextId = $"{RuntimeHelpers.GetHashCode(HttpContext):x8}";
+            HttpContext.User.AddIdentities(new [] {new ClaimsIdentity(new [] {new Claim("dummyClaim", httpContextId) }) });
+            HttpContext.Items["x"] = httpContextId;
 
             await Task.WhenAny(service.SomethingSlowAsync(), Task.Delay(1000));
 

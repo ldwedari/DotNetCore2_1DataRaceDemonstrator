@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -42,6 +43,7 @@ namespace DotNetCore2_1HttpContextDataRace
         public async Task SomethingSlowAsync()
         {
             var y = _accessor.HttpContext.Items["x"];
+            var yClaim = _accessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "dummyClaim");
             await Task.Delay(1500);
 
             // There's a data race here because this can be cleaned up at any time
@@ -49,6 +51,7 @@ namespace DotNetCore2_1HttpContextDataRace
             {
                 // Even though we did the null check above, it may have changed by the time we access the value we wanted.
                 var x = _accessor.HttpContext.Items["x"];
+                var xClaim = _accessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "dummyClaim");
                 if (x != null && x != y)
                 {
                     var now = $"{RuntimeHelpers.GetHashCode(_accessor.HttpContext):x8}";
