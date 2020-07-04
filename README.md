@@ -1,5 +1,7 @@
 # DotNetCore2_1DataRaceDemonstrator
-This shows that .net Core 2.1 may have Data Race conditions on HTTPContext.
+This shows that .net Core 2.1 may have Data Race conditions on HTTPContext. This means that if HttpContext is accessed by mistake (bug) after a request has completed it may have the value of an HttpContext of a different request.
+This will even cause that a request obtains the claims of a request performed by a different user.
+
 # How to run
 Load the `DotNetCore2_1DataRaceDemonstrator.sln` file in Visual Studio 2019.
 Go to the solution properties dialog and select Multiple startup projects. Select Start action in all the projects of the solution.
