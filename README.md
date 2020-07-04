@@ -20,6 +20,6 @@ This image shows how the content provided but HttpContext has been replaced afte
 ![Screen capture with data race](https://raw.githubusercontent.com/ldwedari/DotNetCore2_1DataRaceDemonstrator/master/ProofOfSwappedContext.png)
 
 
-This code is based on what @davidfowl posted in issue https://github.com/dotnet/aspnetcore/issues/14975. His code is for .Net Core 3.1, but it also happens in 2.1.
+This code is based on what @davidfowl posted in issue https://github.com/dotnet/aspnetcore/issues/14975. His code is for .net Core 3.1, but it also happens in .net Core 2.1 up to version 2.1.19 (the latest I tried).
 
 (MIT License)
