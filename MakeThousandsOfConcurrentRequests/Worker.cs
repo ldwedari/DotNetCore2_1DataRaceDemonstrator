@@ -1,10 +1,10 @@
-using Microsoft.Extensions.Hosting;
 using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
 
-namespace MakeThousandsOfConcurrentOfRequests
+namespace MakeThousandsOfConcurrentRequests
 {
     public class Worker : BackgroundService
     {
@@ -17,14 +17,17 @@ namespace MakeThousandsOfConcurrentOfRequests
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            //await Task.Delay(5000, stoppingToken); //Wait for the Server to start
-            var tasks = Enumerable.Range(0, 10000).Select(i =>
+            await Task.Delay(5000, stoppingToken); //Wait for the Server to start
+            while (!stoppingToken.IsCancellationRequested)
             {
-                var httpClient = _clientFactory.CreateClient($"test");
-                return httpClient.GetAsync("https://localhost:44394/api/values", stoppingToken);
-            });
+                var tasks = Enumerable.Range(0, 100).Select(i =>
+                {
+                    var httpClient = _clientFactory.CreateClient($"test");
+                    return httpClient.GetAsync("https://localhost:5001/api/values", stoppingToken);
+                });
 
-            await Task.WhenAll(tasks);
+                await Task.WhenAll(tasks);
+            }
         }
     }
 }

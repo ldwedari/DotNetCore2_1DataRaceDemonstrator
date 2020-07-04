@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -51,6 +52,7 @@ namespace DotNetCore2_1HttpContextDataRace
                 if (x != null && x != y)
                 {
                     var now = $"{RuntimeHelpers.GetHashCode(_accessor.HttpContext):x8}";
+                    Debugger.Break();
                     x = y;
                 }
             }

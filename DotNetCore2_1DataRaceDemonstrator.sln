@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCore2_1HttpContextDataRace", "DotNetCore2_1HttpContextDataRace\DotNetCore2_1HttpContextDataRace.csproj", "{10CDC48D-E065-421B-9EA7-156C8EC44E24}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MakeThousandsOfConcurrentRequests", "MakeThousandsOfConcurrentRequests\MakeThousandsOfConcurrentRequests.csproj", "{66230FC4-CBEC-4F48-8B76-70F352567C61}"
+	ProjectSection(ProjectDependencies) = postProject
+		{10CDC48D-E065-421B-9EA7-156C8EC44E24} = {10CDC48D-E065-421B-9EA7-156C8EC44E24}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10CDC48D-E065-421B-9EA7-156C8EC44E24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10CDC48D-E065-421B-9EA7-156C8EC44E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10CDC48D-E065-421B-9EA7-156C8EC44E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10CDC48D-E065-421B-9EA7-156C8EC44E24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66230FC4-CBEC-4F48-8B76-70F352567C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66230FC4-CBEC-4F48-8B76-70F352567C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66230FC4-CBEC-4F48-8B76-70F352567C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66230FC4-CBEC-4F48-8B76-70F352567C61}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA9A0DDE-0780-4078-8BE5-B88CDEF7385C}
+	EndGlobalSection
+EndGlobal
