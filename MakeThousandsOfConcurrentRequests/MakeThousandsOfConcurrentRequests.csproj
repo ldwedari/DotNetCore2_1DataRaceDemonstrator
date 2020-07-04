@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>dotnet-MakeThousandsOfConcurrentOfRequests-92528E51-4A36-4AB1-9397-183C67E12478</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.5" />
+  </ItemGroup>
+</Project>
