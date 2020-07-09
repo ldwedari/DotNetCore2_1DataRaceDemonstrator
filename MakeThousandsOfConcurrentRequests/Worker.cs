@@ -20,7 +20,7 @@ namespace MakeThousandsOfConcurrentRequests
             await Task.Delay(5000, stoppingToken); //Wait for the Server to start
             while (!stoppingToken.IsCancellationRequested)
             {
-                var tasks = Enumerable.Range(0, 100).Select(i =>
+                var tasks = Enumerable.Range(0, 300).Select(i =>
                 {
                     var httpClient = _clientFactory.CreateClient($"test");
                     return httpClient.GetAsync("https://localhost:5001/api/values", stoppingToken);

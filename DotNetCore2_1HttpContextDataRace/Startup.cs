@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace DotNetCore2_1HttpContextDataRace
 {
@@ -14,12 +15,12 @@ namespace DotNetCore2_1HttpContextDataRace
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddSingleton<Service>();
             services.AddHttpContextAccessor();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Service service)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Service service)
         {
             if (env.IsDevelopment())
             {
@@ -27,7 +28,10 @@ namespace DotNetCore2_1HttpContextDataRace
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseRouting();
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllers();
+            });
         }
     }
 
