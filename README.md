@@ -1,5 +1,9 @@
 # DotNetCore2_1DataRaceDemonstrator
 This shows that .net Core 2.1 may have Data Race conditions on HTTPContext.
+
+# Prerequisites
+Install 64bit asp.net Core SDK 2.1.19. If you don't have it installed the Visual Studio will try to use the next version of asp.net core, ie. 2.2. An you won't be able to reproduce the issue.
+
 # How to run
 Load the `DotNetCore2_1DataRaceDemonstrator.sln` file in Visual Studio 2019.
 Go to the solution properties dialog and select Multiple startup projects. Select Start action in all the projects of the solution.
